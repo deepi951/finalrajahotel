@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "747860383275",
+    "project_id": "srirajahotel-9fe65",
+    "storage_bucket": "srirajahotel-9fe65.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747860383275:android:47a2f6b590c95e9104fc6e",
+        "android_client_info": {
+          "package_name": "com.example.rajahotel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATPL_vH6FTkgSd73cFR3aNiO2RqUnjylI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

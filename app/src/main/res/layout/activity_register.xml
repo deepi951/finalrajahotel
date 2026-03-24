@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Background Image -->
+    <!-- Background -->
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/hotel_bg"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"/>
 
-    <!-- Login Fields -->
+    <!-- Register Form -->
 
     <LinearLayout
         android:orientation="vertical"
@@ -21,22 +21,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Email ID -->
+        <!-- Full Name -->
 
         <EditText
-            android:id="@+id/email"
-            android:hint="Enter Email ID"
-            android:inputType="textEmailAddress"
+            android:id="@+id/fullName"
+            android:hint="Full Name"
             android:background="#FFFFFF"
             android:padding="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <!-- Password -->
+        <!-- Email -->
+
+        <EditText
+            android:id="@+id/email"
+            android:hint="Email ID"
+            android:inputType="textEmailAddress"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- 🔐 PASSWORD (REQUIRED) -->
 
         <EditText
             android:id="@+id/password"
-            android:hint="Enter Password"
+            android:hint="Create Password"
             android:inputType="textPassword"
             android:background="#FFFFFF"
             android:padding="12dp"
@@ -44,26 +55,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <!-- Login Button -->
+        <!-- Register Button -->
 
         <Button
-            android:id="@+id/loginBtn"
-            android:text="Login"
+            android:id="@+id/registerBtn"
+            android:text="Register"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <!-- Register Option -->
-
-        <TextView
-            android:id="@+id/registerText"
-            android:text="New User? Register"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>

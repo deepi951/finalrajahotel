@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ===== IDLY ===== -->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/idly"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:text="Idly"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Rs. 10"
+                android:textColor="#FF5722"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <!-- Quantity -->
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/minus1" android:text="-" android:layout_width="50dp" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/qty1" android:text="1" android:textSize="18sp" android:gravity="center" android:layout_width="50dp" android:layout_height="wrap_content"/>
+                <Button android:id="@+id/plus1" android:text="+" android:layout_width="50dp" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addCart1"
+                android:text="Add to Cart"
+                android:layout_marginTop="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <!-- ===== DOSA ===== -->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/dosa"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:text="Dosa"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Rs. 20"
+                android:textColor="#FF5722"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <!-- Quantity -->
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/minus2" android:text="-" android:layout_width="50dp" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/qty2" android:text="1" android:textSize="18sp" android:gravity="center" android:layout_width="50dp" android:layout_height="wrap_content"/>
+                <Button android:id="@+id/plus2" android:text="+" android:layout_width="50dp" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addCart2"
+                android:text="Add to Cart"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <!-- ===== MEALS ===== -->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/meals"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:text="Meals"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Rs. 90"
+                android:textColor="#FF5722"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <!-- Quantity -->
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/minus3" android:text="-" android:layout_width="50dp" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/qty3" android:text="1" android:textSize="18sp" android:gravity="center" android:layout_width="50dp" android:layout_height="wrap_content"/>
+                <Button android:id="@+id/plus3" android:text="+" android:layout_width="50dp" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addCart3"
+                android:text="Add to Cart"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <!-- ===== VEG FRIED RICE ===== -->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/vegfriedrice"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:text="Veg Fried Rice"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Rs. 80"
+                android:textColor="#FF5722"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <!-- Quantity -->
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button android:id="@+id/minus4" android:text="-" android:layout_width="50dp" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/qty4" android:text="1" android:textSize="18sp" android:gravity="center" android:layout_width="50dp" android:layout_height="wrap_content"/>
+                <Button android:id="@+id/plus4" android:text="+" android:layout_width="50dp" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addCart4"
+                android:text="Add to Cart"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

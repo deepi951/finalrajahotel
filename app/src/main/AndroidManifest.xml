@@ -8,22 +8,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Rajahotel">
-
-        <activity android:name=".OtpActivity"/>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".MainActivity"/>
-
+        <activity
+            android:name=".VegMenuActivity"
+            android:exported="false" />
+        <!-- Register Page -->
+        <activity android:name=".RegisterActivity" /> <!-- OTP Page -->
+        <activity android:name=".OtpActivity" /> <!-- Login Page -->
+        <activity android:name=".LoginActivity" /> <!-- Main Menu Page -->
+        <activity android:name=".MainActivity" /> <!-- Splash Screen (App Start) -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
-
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
     </application>
 
 </manifest>

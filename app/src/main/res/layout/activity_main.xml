@@ -7,10 +7,10 @@
     <!-- Background Image -->
 
     <ImageView
-        android:src="@drawable/hotel_bg"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/hotel_bg"
+        android:scaleType="centerCrop" />
 
     <!-- Menu Content -->
 
@@ -29,13 +29,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <!-- VEG MENU BUTTON -->
+
         <Button
+            android:id="@+id/vegMenuBtn"
             android:text="Veg Menu"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"/>
 
+        <!-- NON-VEG MENU BUTTON -->
+
         <Button
+            android:id="@+id/nonVegMenuBtn"
             android:text="Non-Veg Menu"
             android:layout_width="200dp"
             android:layout_height="wrap_content"/>
