@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- CHICKEN BIRYANI -->
+        <TextView android:text="Chicken Biryani - Rs.150" android:textSize="18sp"/>
+        <LinearLayout android:orientation="horizontal">
+            <Button android:id="@+id/minus1" android:text="-" />
+            <TextView android:id="@+id/qty1" android:text="1" />
+            <Button android:id="@+id/plus1" android:text="+" />
+        </LinearLayout>
+        <Button android:id="@+id/addCart1" android:text="Add to Cart"/>
+
+        <!-- MUTTON CURRY -->
+        <TextView android:text="Mutton Curry - Rs.200" android:textSize="18sp"/>
+        <LinearLayout android:orientation="horizontal">
+            <Button android:id="@+id/minus2" android:text="-" />
+            <TextView android:id="@+id/qty2" android:text="1" />
+            <Button android:id="@+id/plus2" android:text="+" />
+        </LinearLayout>
+        <Button android:id="@+id/addCart2" android:text="Add to Cart"/>
+
+        <!-- CHICKEN 65 -->
+        <TextView android:text="Chicken 65 - Rs.120" android:textSize="18sp"/>
+        <LinearLayout android:orientation="horizontal">
+            <Button android:id="@+id/minus3" android:text="-" />
+            <TextView android:id="@+id/qty3" android:text="1" />
+            <Button android:id="@+id/plus3" android:text="+" />
+        </LinearLayout>
+        <Button android:id="@+id/addCart3" android:text="Add to Cart"/>
+
+        <!-- VIEW CART -->
+        <Button
+            android:id="@+id/viewCartBtn"
+            android:text="View Cart 🛒"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+</ScrollView>

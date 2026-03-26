@@ -5,15 +5,19 @@
     android:layout_height="match_parent">
 
     <!-- Background Image -->
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/hotel_bg"
         android:scaleType="centerCrop" />
 
-    <!-- Menu Content -->
+    <!-- Overlay (for better readability) -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000" />
 
+    <!-- Menu Content -->
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center"
@@ -22,28 +26,37 @@
 
         <TextView
             android:text="Sri Raja Hotel Menu"
-            android:textSize="26sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <!-- VEG MENU BUTTON -->
-
+        <!-- VEG MENU -->
         <Button
             android:id="@+id/vegMenuBtn"
-            android:text="Veg Menu"
-            android:layout_width="200dp"
+            android:text="Veg Menu 🌱"
+            android:textSize="16sp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="15dp"/>
 
-        <!-- NON-VEG MENU BUTTON -->
-
+        <!-- NON-VEG MENU -->
         <Button
             android:id="@+id/nonVegMenuBtn"
-            android:text="Non-Veg Menu"
-            android:layout_width="200dp"
+            android:text="Non-Veg Menu 🍗"
+            android:textSize="16sp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- VIEW CART -->
+        <Button
+            android:id="@+id/viewCartBtn"
+            android:text="View Cart 🛒"
+            android:textSize="16sp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>

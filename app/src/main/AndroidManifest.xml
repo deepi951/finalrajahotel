@@ -9,13 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rajahotel">
         <activity
-            android:name=".VegMenuActivity"
+            android:name=".NonVegMenuActivity"
             android:exported="false" />
-        <!-- Register Page -->
-        <activity android:name=".RegisterActivity" /> <!-- OTP Page -->
-        <activity android:name=".OtpActivity" /> <!-- Login Page -->
-        <activity android:name=".LoginActivity" /> <!-- Main Menu Page -->
-        <activity android:name=".MainActivity" /> <!-- Splash Screen (App Start) -->
+        <!-- Cart -->
+        <activity
+            android:name=".CartActivity"
+            android:exported="false" /> <!-- Veg Menu -->
+        <activity
+            android:name=".VegMenuActivity"
+            android:exported="false" /> <!-- Auth -->
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" /> <!-- Main -->
+        <activity android:name=".MainActivity" /> <!-- Splash (Launcher) -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">

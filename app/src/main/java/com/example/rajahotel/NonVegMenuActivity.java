@@ -8,16 +8,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class VegMenuActivity extends AppCompatActivity {
+public class NonVegMenuActivity extends AppCompatActivity {
 
-    int qty1 = 1, qty2 = 1, qty3 = 1, qty4 = 1;
+    int qty1 = 1, qty2 = 1, qty3 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_veg_menu);
+        setContentView(R.layout.activity_nonveg_menu);
 
-        // ===== IDLY =====
+        Toast.makeText(this, "Non-Veg Page Opened", Toast.LENGTH_SHORT).show();
+
+        // ===== CHICKEN BIRYANI =====
         TextView q1 = findViewById(R.id.qty1);
         Button plus1 = findViewById(R.id.plus1);
         Button minus1 = findViewById(R.id.minus1);
@@ -34,10 +36,10 @@ public class VegMenuActivity extends AppCompatActivity {
         });
 
         add1.setOnClickListener(v ->
-                addToCart("Idly", 10, qty1, R.drawable.idly)
+                addToCart("Chicken Biryani", 150, qty1)
         );
 
-        // ===== DOSA =====
+        // ===== MUTTON CURRY =====
         TextView q2 = findViewById(R.id.qty2);
         Button plus2 = findViewById(R.id.plus2);
         Button minus2 = findViewById(R.id.minus2);
@@ -54,10 +56,10 @@ public class VegMenuActivity extends AppCompatActivity {
         });
 
         add2.setOnClickListener(v ->
-                addToCart("Dosa", 20, qty2, R.drawable.dosa)
+                addToCart("Mutton Curry", 200, qty2)
         );
 
-        // ===== MEALS =====
+        // ===== CHICKEN 65 =====
         TextView q3 = findViewById(R.id.qty3);
         Button plus3 = findViewById(R.id.plus3);
         Button minus3 = findViewById(R.id.minus3);
@@ -74,43 +76,19 @@ public class VegMenuActivity extends AppCompatActivity {
         });
 
         add3.setOnClickListener(v ->
-                addToCart("Meals", 90, qty3, R.drawable.meals)
+                addToCart("Chicken 65", 120, qty3)
         );
 
-        // ===== VEG FRIED RICE =====
-        TextView q4 = findViewById(R.id.qty4);
-        Button plus4 = findViewById(R.id.plus4);
-        Button minus4 = findViewById(R.id.minus4);
-        Button add4 = findViewById(R.id.addCart4);
-
-        plus4.setOnClickListener(v -> {
-            qty4++;
-            q4.setText(String.valueOf(qty4));
-        });
-
-        minus4.setOnClickListener(v -> {
-            if (qty4 > 1) qty4--;
-            q4.setText(String.valueOf(qty4));
-        });
-
-        add4.setOnClickListener(v ->
-                addToCart("Veg Fried Rice", 80, qty4, R.drawable.vegfriedrice)
-        );
-
-        // ===== VIEW CART BUTTON =====
+        // VIEW CART BUTTON
         Button viewCart = findViewById(R.id.viewCartBtn);
         viewCart.setOnClickListener(v ->
                 startActivity(new Intent(this, CartActivity.class))
         );
     }
 
-    // 🔥 ADD TO CART FUNCTION (MULTI ITEM)
-    private void addToCart(String name, int price, int qty, int image) {
-
-        CartManager.cartList.add(new CartItem(name, price, qty, image));
-
+    private void addToCart(String name, int price, int qty) {
         Toast.makeText(this,
-                name + " added to cart 🛒",
+                name + " added (" + qty + ")",
                 Toast.LENGTH_SHORT).show();
     }
 }
