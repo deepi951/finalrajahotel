@@ -9,18 +9,46 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rajahotel">
         <activity
+            android:name=".cart_item_row"
+            android:exported="false" />
+        <activity
             android:name=".NonVegMenuActivity"
             android:exported="false" />
-        <!-- Cart -->
         <activity
             android:name=".CartActivity"
-            android:exported="false" /> <!-- Veg Menu -->
+            android:exported="false" />
         <activity
             android:name=".VegMenuActivity"
-            android:exported="false" /> <!-- Auth -->
+            android:exported="false" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" /> <!-- Main -->
-        <activity android:name=".MainActivity" /> <!-- Splash (Launcher) -->
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" />
+        <!-- Admin Panel Activities -->
+        <activity
+            android:name=".AdminLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddEditMenuItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewOrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageCateringActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewCustomersActivity"
+            android:exported="false" />
+        <!-- Splash Activity -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">

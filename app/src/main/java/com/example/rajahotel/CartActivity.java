@@ -2,39 +2,33 @@ package com.example.rajahotel;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class CartActivity extends AppCompatActivity {
 
-    TextView cartText;
+    RecyclerView recyclerView;
+    TextView totalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        cartText = findViewById(R.id.cartText);
+        recyclerView = findViewById(R.id.cartRecyclerView);
+        totalPrice = findViewById(R.id.totalPrice);
 
-        StringBuilder data = new StringBuilder();
+        CartAdapter adapter = new CartAdapter(CartManager.cartList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        // Calculate total price
         int total = 0;
-
         for (CartItem item : CartManager.cartList) {
-
-            int itemTotal = item.price * item.quantity;
-
-            data.append("🍽 ")
-                    .append(item.name)
-                    .append("\nQty: ")
-                    .append(item.quantity)
-                    .append("\nPrice: Rs.")
-                    .append(itemTotal)
-                    .append("\n\n");
-
-            total += itemTotal;
+            total += item.price * item.quantity;
         }
-
-        data.append("💰 Total: Rs. ").append(total);
-
-        cartText.setText(data.toString());
+        totalPrice.setText("Total: Rs. " + total);
     }
 }

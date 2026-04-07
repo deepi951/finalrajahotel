@@ -47,6 +47,14 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
+            // 🔐 Check if user is trying to register as admin
+            if (AdminConfig.isAdminEmail(mail)) {
+                Toast.makeText(this,
+                        "⛔ This email is reserved for admin only!",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+
             if (pass.length() < 6) {
                 password.setError("Password must be 6+ characters");
                 return;

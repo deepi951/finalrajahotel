@@ -17,8 +17,6 @@ public class NonVegMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nonveg_menu);
 
-        Toast.makeText(this, "Non-Veg Page Opened", Toast.LENGTH_SHORT).show();
-
         // ===== CHICKEN BIRYANI =====
         TextView q1 = findViewById(R.id.qty1);
         Button plus1 = findViewById(R.id.plus1);
@@ -36,7 +34,7 @@ public class NonVegMenuActivity extends AppCompatActivity {
         });
 
         add1.setOnClickListener(v ->
-                addToCart("Chicken Biryani", 150, qty1)
+                addToCart("Chicken Biryani", 150, qty1, R.drawable.chickenbiryani)
         );
 
         // ===== MUTTON CURRY =====
@@ -56,7 +54,7 @@ public class NonVegMenuActivity extends AppCompatActivity {
         });
 
         add2.setOnClickListener(v ->
-                addToCart("Mutton Curry", 200, qty2)
+                addToCart("Mutton Curry", 200, qty2, R.drawable.muttoncurry)
         );
 
         // ===== CHICKEN 65 =====
@@ -76,19 +74,19 @@ public class NonVegMenuActivity extends AppCompatActivity {
         });
 
         add3.setOnClickListener(v ->
-                addToCart("Chicken 65", 120, qty3)
+                addToCart("Chicken 65", 120, qty3, R.drawable.chicken65)
         );
 
-        // VIEW CART BUTTON
+        // ===== VIEW CART BUTTON =====
         Button viewCart = findViewById(R.id.viewCartBtn);
         viewCart.setOnClickListener(v ->
                 startActivity(new Intent(this, CartActivity.class))
         );
     }
 
-    private void addToCart(String name, int price, int qty) {
-        Toast.makeText(this,
-                name + " added (" + qty + ")",
-                Toast.LENGTH_SHORT).show();
+    // 🔥 ADD TO CART FUNCTION
+    private void addToCart(String name, int price, int qty, int image) {
+        CartManager.cartList.add(new CartItem(name, price, qty, image));
+        Toast.makeText(this, name + " added to cart 🛒", Toast.LENGTH_SHORT).show();
     }
 }

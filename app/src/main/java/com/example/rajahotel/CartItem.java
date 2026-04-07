@@ -4,7 +4,7 @@ public class CartItem {
     String name;
     int price;
     int quantity;
-    int image;
+    int image; // Drawable resource id
 
     public CartItem(String name, int price, int quantity, int image) {
         this.name = name;
