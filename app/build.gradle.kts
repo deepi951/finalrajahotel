@@ -51,6 +51,9 @@ dependencies {
     // ⭐ FIREBASE EMAIL AUTHENTICATION
     implementation("com.google.firebase:firebase-auth:22.3.0")
 
+    // ⭐ FIREBASE REALTIME DATABASE
+    implementation("com.google.firebase:firebase-database:20.3.0")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

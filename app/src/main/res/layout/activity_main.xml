@@ -57,7 +57,26 @@
             android:text="View Cart 🛒"
             android:textSize="16sp"
             android:layout_width="220dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- CATERING BOOKING -->
+        <Button
+            android:id="@+id/cateringBtn"
+            android:text="Catering Booking 🍽️"
+            android:textSize="16sp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- MY CATERING BOOKINGS -->
+        <Button
+            android:id="@+id/myCateringBtn"
+            android:text="My Catering Bookings 📋"
+            android:textSize="16sp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"/>
 
     </LinearLayout>
 

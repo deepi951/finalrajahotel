@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Catering Enquiry"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/userNameEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your Name *" />
+
+        <EditText
+            android:id="@+id/userEmailEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email ID *" />
+
+        <EditText
+            android:id="@+id/eventNameEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name of the Event *" />
+
+        <EditText
+            android:id="@+id/phoneEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number *" />
+
+        <EditText
+            android:id="@+id/altPhoneEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alternate Phone Number" />
+
+        <EditText
+            android:id="@+id/guestCountEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of People *" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu Type:"
+            android:layout_marginTop="16dp" />
+
+        <RadioGroup
+            android:id="@+id/menuTypeRg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/vegRb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Veg" />
+
+            <RadioButton
+                android:id="@+id/nonVegRb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Non Veg" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/sampleItemsTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select menu type to see sample items"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/locationEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Event Location" />
+
+        <EditText
+            android:id="@+id/requirementsEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Additional Requirements" />
+
+        <TextView
+            android:id="@+id/contactInfoTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="16dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Enquiry"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>

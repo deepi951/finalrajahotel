@@ -46,6 +46,15 @@
             android:name=".ManageCateringActivity"
             android:exported="false" />
         <activity
+            android:name=".CateringBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CateringConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyCateringBookingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewCustomersActivity"
             android:exported="false" />
         <!-- Splash Activity -->
@@ -59,5 +68,8 @@
             </intent-filter>
         </activity>
     </application>
+
+    <!-- Internet Permission for Firebase -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

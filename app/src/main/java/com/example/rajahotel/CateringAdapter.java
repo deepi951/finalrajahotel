@@ -36,7 +36,7 @@ public class CateringAdapter extends RecyclerView.Adapter<CateringAdapter.Cateri
         
         holder.bookingId.setText("Booking ID: " + booking.bookingId);
         holder.customerName.setText("Customer: " + booking.userName);
-        holder.eventType.setText("Event: " + booking.eventType);
+        holder.eventType.setText("Event: " + booking.eventName); // Changed to eventName
         holder.eventDate.setText("Date: " + booking.eventDate);
         holder.guestCount.setText("Guests: " + booking.guestCount);
         holder.estimatedCost.setText("Cost: Rs. " + booking.estimatedCost);
@@ -69,4 +69,3 @@ public class CateringAdapter extends RecyclerView.Adapter<CateringAdapter.Cateri
         }
     }
 }
-

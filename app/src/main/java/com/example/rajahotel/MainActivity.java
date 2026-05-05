@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button vegBtn, nonVegBtn, cartBtn;
+    Button vegBtn, nonVegBtn, cartBtn, cateringBtn, myCateringBtn; // Added cateringBtn and myCateringBtn
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         vegBtn = findViewById(R.id.vegMenuBtn);
         nonVegBtn = findViewById(R.id.nonVegMenuBtn);
         cartBtn = findViewById(R.id.viewCartBtn);
+        cateringBtn = findViewById(R.id.cateringBtn); // Added
+        myCateringBtn = findViewById(R.id.myCateringBtn); // NEW
 
         // Veg Menu
         vegBtn.setOnClickListener(v -> {
@@ -33,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
         // View Cart
         cartBtn.setOnClickListener(v -> {
             startActivity(new Intent(this, CartActivity.class));
+        });
+
+        // Catering Booking - NEW
+        cateringBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, CateringBookingActivity.class));
+        });
+
+        // My Catering Bookings - NEW
+        myCateringBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, MyCateringBookingsActivity.class));
         });
     }
 }
