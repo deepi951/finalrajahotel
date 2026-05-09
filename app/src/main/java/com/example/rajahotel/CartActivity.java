@@ -27,7 +27,7 @@ public class CartActivity extends AppCompatActivity {
         // Calculate total price
         int total = 0;
         for (CartItem item : CartManager.cartList) {
-            total += item.price * item.quantity;
+            total += item.getFinalPrice() * item.quantity;
         }
         totalPrice.setText("Total: Rs. " + total);
     }

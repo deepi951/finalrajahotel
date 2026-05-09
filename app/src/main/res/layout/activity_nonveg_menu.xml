@@ -1,167 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <!-- TITLE -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Non-Veg Menu"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="16dp" />
+
+    <!-- RECYCLERVIEW -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nonVegRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-        <!-- ===== CHICKEN BIRYANI ===== -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <!-- VIEW CART BUTTON -->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:src="@drawable/chickenbiryani"
-                android:scaleType="centerCrop"/>
+    <Button
+        android:id="@+id/viewCartBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Cart 🛒"
+        android:layout_margin="12dp"/>
 
-            <TextView
-                android:text="Chicken Biryani"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:text="Rs. 150"
-                android:textColor="#FF5722"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <!-- Quantity -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <Button android:id="@+id/minus1" android:text="-" android:layout_width="50dp" android:layout_height="wrap_content"/>
-                <TextView android:id="@+id/qty1" android:text="1" android:textSize="18sp" android:gravity="center" android:layout_width="50dp" android:layout_height="wrap_content"/>
-                <Button android:id="@+id/plus1" android:text="+" android:layout_width="50dp" android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/addCart1"
-                android:text="Add to Cart"
-                android:layout_marginTop="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <!-- ===== MUTTON CURRY ===== -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:src="@drawable/muttoncurry"
-                android:scaleType="centerCrop"/>
-
-            <TextView
-                android:text="Mutton Curry"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:text="Rs. 200"
-                android:textColor="#FF5722"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <!-- Quantity -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <Button android:id="@+id/minus2" android:text="-" android:layout_width="50dp" android:layout_height="wrap_content"/>
-                <TextView android:id="@+id/qty2" android:text="1" android:textSize="18sp" android:gravity="center" android:layout_width="50dp" android:layout_height="wrap_content"/>
-                <Button android:id="@+id/plus2" android:text="+" android:layout_width="50dp" android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/addCart2"
-                android:text="Add to Cart"
-                android:layout_marginTop="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <!-- ===== CHICKEN 65 ===== -->
-        <LinearLayout
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginBottom="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:src="@drawable/chicken65"
-                android:scaleType="centerCrop"/>
-
-            <TextView
-                android:text="Chicken 65"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:text="Rs. 120"
-                android:textColor="#FF5722"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <!-- Quantity -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <Button android:id="@+id/minus3" android:text="-" android:layout_width="50dp" android:layout_height="wrap_content"/>
-                <TextView android:id="@+id/qty3" android:text="1" android:textSize="18sp" android:gravity="center" android:layout_width="50dp" android:layout_height="wrap_content"/>
-                <Button android:id="@+id/plus3" android:text="+" android:layout_width="50dp" android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/addCart3"
-                android:text="Add to Cart"
-                android:layout_marginTop="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:id="@+id/viewCartBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="View Cart 🛒"
-                android:layout_marginTop="20dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

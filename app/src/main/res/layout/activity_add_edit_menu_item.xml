@@ -61,6 +61,20 @@
             android:layout_marginBottom="15dp"/>
 
         <TextView
+            android:text="Discount (%)"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/itemDiscountEt"
+            android:hint="Enter discount percentage"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
             android:text="Category"
             android:textStyle="bold"
             android:layout_width="wrap_content"

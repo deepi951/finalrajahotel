@@ -3,23 +3,53 @@ package com.example.rajahotel;
 import java.io.Serializable;
 
 public class MenuItem implements Serializable {
+
     public String itemId;
+
     public String name;
+
     public int price;
-    public String category; // "Veg" or "Non-Veg"
+
+    public String category;
+
     public String description;
-    public boolean available;
 
-    public MenuItem() {}
+    public String imageUrl;
 
-    public MenuItem(String itemId, String name, int price, String category, 
-                    String description, boolean available) {
+    public int discount;
+
+    public boolean isAvailable;
+
+    // EMPTY CONSTRUCTOR FOR FIREBASE
+    public MenuItem() {
+    }
+
+    // FULL CONSTRUCTOR
+    public MenuItem(
+            String itemId,
+            String name,
+            int price,
+            String category,
+            String description,
+            String imageUrl,
+            int discount,
+            boolean isAvailable
+    ) {
+
         this.itemId = itemId;
+
         this.name = name;
+
         this.price = price;
+
         this.category = category;
+
         this.description = description;
-        this.available = available;
+
+        this.imageUrl = imageUrl;
+
+        this.discount = discount;
+
+        this.isAvailable = isAvailable;
     }
 }
-
