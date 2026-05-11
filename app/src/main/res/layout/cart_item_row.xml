@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:gravity="center_vertical">
 
     <ImageView
         android:id="@+id/itemImage"
@@ -38,5 +39,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/removeBtn"
+        android:src="@android:drawable/ic_menu_delete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:contentDescription="Remove item"
+        android:tint="#F44336"/>
 
 </LinearLayout>

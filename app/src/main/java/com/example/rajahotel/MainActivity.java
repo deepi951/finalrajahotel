@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button vegBtn, nonVegBtn, cartBtn, cateringBtn, myCateringBtn; // Added cateringBtn and myCateringBtn
+    Button vegBtn, nonVegBtn, cartBtn, cateringBtn, myCateringBtn, myOrdersBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
         vegBtn = findViewById(R.id.vegMenuBtn);
         nonVegBtn = findViewById(R.id.nonVegMenuBtn);
         cartBtn = findViewById(R.id.viewCartBtn);
-        cateringBtn = findViewById(R.id.cateringBtn); // Added
-        myCateringBtn = findViewById(R.id.myCateringBtn); // NEW
+        myOrdersBtn = findViewById(R.id.myOrdersBtn);
+        cateringBtn = findViewById(R.id.cateringBtn);
+        myCateringBtn = findViewById(R.id.myCateringBtn);
 
         // Veg Menu
         vegBtn.setOnClickListener(v -> {
@@ -37,12 +38,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, CartActivity.class));
         });
 
-        // Catering Booking - NEW
+        // My Orders
+        myOrdersBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, MyOrdersActivity.class));
+        });
+
+        // Catering Booking
         cateringBtn.setOnClickListener(v -> {
             startActivity(new Intent(this, CateringBookingActivity.class));
         });
 
-        // My Catering Bookings - NEW
+        // My Catering Bookings
         myCateringBtn.setOnClickListener(v -> {
             startActivity(new Intent(this, MyCateringBookingsActivity.class));
         });

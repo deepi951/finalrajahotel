@@ -35,13 +35,13 @@ public class ViewOrdersActivity extends AppCompatActivity {
 
     private void loadOrders() {
         // Load from Firebase (dummy data for now)
+        // Fixed constructor calls to match Order(String, String, String, String, String, int, String, String, String, String, String, ArrayList<CartItem>)
         orders.add(new Order("ORD001", "USR001", "John Doe", "john@example.com", "9876543210",
-                250.0, "Pending", "2024-03-30", "123 Main St", "2x Idly, 1x Dosa"));
+                250, "Pending", "Unpaid", "COD", "123 Main St", "2024-03-30", new ArrayList<CartItem>()));
         orders.add(new Order("ORD002", "USR002", "Jane Smith", "jane@example.com", "9876543211",
-                350.0, "Preparing", "2024-03-30", "456 Oak Ave", "1x Chicken 65, 2x Meals"));
+                350, "Preparing", "Paid", "COD", "456 Oak Ave", "2024-03-30", new ArrayList<CartItem>()));
 
         OrderAdapter adapter = new OrderAdapter(orders, this);
         recyclerView.setAdapter(adapter);
     }
 }
-

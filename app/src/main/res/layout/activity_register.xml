@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!-- Background -->
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,57 +11,69 @@
         android:scaleType="centerCrop"/>
 
     <!-- Register Form -->
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="40dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <!-- Full Name -->
-
-        <EditText
-            android:id="@+id/fullName"
-            android:hint="Full Name"
-            android:background="#FFFFFF"
-            android:padding="12dp"
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="40dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
 
-        <!-- Email -->
+            <!-- Full Name -->
+            <EditText
+                android:id="@+id/fullName"
+                android:hint="Full Name"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/email"
-            android:hint="Email ID"
-            android:inputType="textEmailAddress"
-            android:background="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <!-- Email -->
+            <EditText
+                android:id="@+id/email"
+                android:hint="Email ID"
+                android:inputType="textEmailAddress"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <!-- 🔐 PASSWORD (REQUIRED) -->
+            <!-- Phone Number -->
+            <EditText
+                android:id="@+id/phone"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/password"
-            android:hint="Create Password"
-            android:inputType="textPassword"
-            android:background="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <!-- 🔐 PASSWORD (REQUIRED) -->
+            <EditText
+                android:id="@+id/password"
+                android:hint="Create Password"
+                android:inputType="textPassword"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <!-- Register Button -->
+            <!-- Register Button -->
+            <Button
+                android:id="@+id/registerBtn"
+                android:text="Register"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/registerBtn"
-            android:text="Register"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

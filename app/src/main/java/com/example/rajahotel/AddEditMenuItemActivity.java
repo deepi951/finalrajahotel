@@ -12,9 +12,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class AddEditMenuItemActivity extends AppCompatActivity {
 
-    EditText itemNameEt, itemPriceEt, itemDiscountEt, itemDescEt;
+    EditText itemNameEt, itemPriceEt, itemDiscountEt, itemDescEt, itemImageUrlEt;
     RadioGroup categoryRg;
     SwitchCompat availabilitySwitch;
     Button saveBtn, deleteBtn;
@@ -22,17 +24,21 @@ public class AddEditMenuItemActivity extends AppCompatActivity {
 
     String itemId = null;
     MenuItem currentItem = null;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_menu_item);
 
+        db = FirebaseFirestore.getInstance();
+
         // Initialize views
         itemNameEt = findViewById(R.id.itemNameEt);
         itemPriceEt = findViewById(R.id.itemPriceEt);
         itemDiscountEt = findViewById(R.id.itemDiscountEt);
         itemDescEt = findViewById(R.id.itemDescEt);
+        itemImageUrlEt = findViewById(R.id.itemImageUrlEt); // Added Image URL field
         categoryRg = findViewById(R.id.categoryRg);
         availabilitySwitch = findViewById(R.id.availabilitySwitch);
         saveBtn = findViewById(R.id.saveBtnMenuItem);
@@ -70,8 +76,8 @@ public class AddEditMenuItemActivity extends AppCompatActivity {
         itemPriceEt.setText(String.valueOf(currentItem.price));
         itemDiscountEt.setText(String.valueOf(currentItem.discount));
         itemDescEt.setText(currentItem.description);
+        itemImageUrlEt.setText(currentItem.imageUrl); // Populate Image URL
         
-        // Fixed: Use isAvailable field from MenuItem class
         availabilitySwitch.setChecked(currentItem.isAvailable);
 
         if (currentItem.category != null && currentItem.category.equals("Veg")) {
@@ -86,6 +92,7 @@ public class AddEditMenuItemActivity extends AppCompatActivity {
         String priceStr = itemPriceEt.getText().toString().trim();
         String discountStr = itemDiscountEt.getText().toString().trim();
         String description = itemDescEt.getText().toString().trim();
+        String imageUrl = itemImageUrlEt.getText().toString().trim(); // Get Image URL
         int selectedId = categoryRg.getCheckedRadioButtonId();
         boolean available = availabilitySwitch.isChecked();
 
@@ -100,13 +107,11 @@ public class AddEditMenuItemActivity extends AppCompatActivity {
             String category = selectedId == R.id.vegRadio ? "Veg" : "Non-Veg";
 
             if (itemId == null) {
-                itemId = String.valueOf(System.currentTimeMillis());
+                // For new items, generate a unique ID
+                itemId = db.collection("menu").document().getId();
             }
 
-            // Preserving existing imageUrl if editing
-            String imageUrl = (currentItem != null) ? currentItem.imageUrl : "";
-
-            currentItem = new MenuItem(
+            MenuItem newItem = new MenuItem(
                     itemId,
                     name,
                     price,
@@ -117,9 +122,17 @@ public class AddEditMenuItemActivity extends AppCompatActivity {
                     available
             );
 
-            // Save to Firebase (replace with actual Firebase code)
-            Toast.makeText(this, "Menu item saved successfully ✅", Toast.LENGTH_SHORT).show();
-            finish();
+            // Real Saving Logic for Firestore
+            db.collection("menu").document(itemId)
+                    .set(newItem)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(this, "Menu item saved successfully ✅", Toast.LENGTH_SHORT).show();
+                        finish();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "Error saving: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Invalid number format ❌", Toast.LENGTH_SHORT).show();
         }
@@ -127,9 +140,16 @@ public class AddEditMenuItemActivity extends AppCompatActivity {
 
     private void deleteMenuItem() {
         if (itemId != null) {
-            // Delete from Firebase
-            Toast.makeText(this, "Menu item deleted ✅", Toast.LENGTH_SHORT).show();
-            finish();
+            // Real Delete Logic for Firestore
+            db.collection("menu").document(itemId)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(this, "Menu item deleted ✅", Toast.LENGTH_SHORT).show();
+                        finish();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "Error deleting: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
         }
     }
 }

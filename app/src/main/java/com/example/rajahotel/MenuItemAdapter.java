@@ -1,6 +1,7 @@
 package com.example.rajahotel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,19 +68,16 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuVi
                 item.name
         );
 
-        // Calculate final price after discount
-        int finalPrice = item.price;
-        if (item.discount > 0) {
-            finalPrice = item.price - (item.price * item.discount / 100);
-        }
+        // Use getFinalPrice helper from MenuItem
+        int finalPrice = item.getFinalPrice();
 
         holder.itemPrice.setText(
-                "Rs. " + finalPrice
+                "₹" + finalPrice
         );
 
         if (item.discount > 0) {
             holder.itemDiscount.setVisibility(View.VISIBLE);
-            holder.itemDiscount.setText(item.discount + "% OFF (Original: Rs. " + item.price + ")");
+            holder.itemDiscount.setText(item.discount + "% OFF (Original: ₹" + item.price + ")");
         } else {
             holder.itemDiscount.setVisibility(View.GONE);
         }
@@ -95,14 +93,22 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuVi
         );
 
         /* =====================================
-           IMAGE LOADING
+           IMAGE LOADING (UPDATED)
         ===================================== */
+        // Try to get resource ID from drawable folder using the imageUrl string
+        int imageResId = activity.getResources().getIdentifier(item.imageUrl, "drawable", activity.getPackageName());
 
-        Glide.with(activity)
-
-                .load(item.imageUrl)
-
-                .into(holder.itemImage);
+        if (imageResId != 0) {
+            Glide.with(activity)
+                    .load(imageResId)
+                    .placeholder(R.drawable.hotel_bg)
+                    .into(holder.itemImage);
+        } else {
+            Glide.with(activity)
+                    .load(item.imageUrl)
+                    .placeholder(R.drawable.hotel_bg)
+                    .into(holder.itemImage);
+        }
 
         /* =====================================
            EDIT BUTTON

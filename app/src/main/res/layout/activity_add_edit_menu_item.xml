@@ -103,6 +103,20 @@
         </RadioGroup>
 
         <TextView
+            android:text="Image URL (Link)"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/itemImageUrlEt"
+            android:hint="Paste image link here"
+            android:inputType="textUri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
             android:text="Description"
             android:textStyle="bold"
             android:layout_width="wrap_content"

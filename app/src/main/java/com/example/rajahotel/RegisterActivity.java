@@ -10,13 +10,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText fullName, email, password;
+    EditText fullName, email, password, phone;
     Button registerBtn;
 
     FirebaseAuth mAuth;
+    FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,69 +29,79 @@ public class RegisterActivity extends AppCompatActivity {
 
         fullName = findViewById(R.id.fullName);
         email = findViewById(R.id.email);
+        phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
         registerBtn = findViewById(R.id.registerBtn);
 
         mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         registerBtn.setOnClickListener(v -> {
 
             String name = fullName.getText().toString().trim();
             String mail = email.getText().toString().trim();
+            String phoneNumber = phone.getText().toString().trim();
             String pass = password.getText().toString().trim();
 
-            // Validation
+            // NAME VALIDATION
             if (name.isEmpty()) {
                 fullName.setError("Enter Full Name");
                 return;
             }
 
+            // EMAIL VALIDATION
             if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
                 email.setError("Enter Valid Email");
                 return;
             }
 
-            // 🔐 Check if user is trying to register as admin
+            // PHONE VALIDATION
+            if (phoneNumber.isEmpty() || phoneNumber.length() < 10) {
+                phone.setError("Enter Valid Phone Number");
+                return;
+            }
+
+            // ADMIN BLOCK
             if (AdminConfig.isAdminEmail(mail)) {
-                Toast.makeText(this,
-                        "⛔ This email is reserved for admin only!",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "This Email Reserved For Admin", Toast.LENGTH_LONG).show();
                 return;
             }
 
+            // PASSWORD VALIDATION
             if (pass.length() < 6) {
-                password.setError("Password must be 6+ characters");
+                password.setError("Password Must Be 6+ Characters");
                 return;
             }
 
-            // 🔥 Create account in Firebase
-            mAuth.createUserWithEmailAndPassword(mail, pass)
-                    .addOnCompleteListener(task -> {
+            // CREATE ACCOUNT
+            mAuth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    String uid = mAuth.getCurrentUser().getUid();
 
-                        if (task.isSuccessful()) {
+                    // SEND EMAIL VERIFICATION
+                    mAuth.getCurrentUser().sendEmailVerification();
 
-                            // 📧 Send REAL verification email
-                            mAuth.getCurrentUser()
-                                    .sendEmailVerification();
+                    // USER DATA
+                    HashMap<String, Object> userMap = new HashMap<>();
+                    userMap.put("name", name);
+                    userMap.put("email", mail);
+                    userMap.put("phone", phoneNumber);
+                    userMap.put("verified", false);
 
-                            Toast.makeText(this,
-                                    "Registration Successful! Check email 📧",
-                                    Toast.LENGTH_LONG).show();
+                    // SAVE TO FIRESTORE
+                    firestore.collection("users")
+                            .document(uid)
+                            .set(userMap)
+                            .addOnSuccessListener(unused -> {
+                                Toast.makeText(this, "Registered Successfully. Verify Email.", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                finish();
+                            });
 
-                            startActivity(new Intent(
-                                    RegisterActivity.this,
-                                    LoginActivity.class));
-
-                            finish();
-
-                        } else {
-
-                            Toast.makeText(this,
-                                    "Error: " +
-                                            task.getException().getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    });
+                } else {
+                    Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         });
     }
 }

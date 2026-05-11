@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -55,6 +54,15 @@
         <Button
             android:id="@+id/viewCartBtn"
             android:text="View Cart 🛒"
+            android:textSize="16sp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- MY ORDERS -->
+        <Button
+            android:id="@+id/myOrdersBtn"
+            android:text="My Orders 📦"
             android:textSize="16sp"
             android:layout_width="220dp"
             android:layout_height="wrap_content"

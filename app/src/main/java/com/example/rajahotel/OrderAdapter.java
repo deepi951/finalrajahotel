@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,8 +36,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         Order order = orders.get(position);
         
         holder.orderId.setText("Order ID: " + order.orderId);
-        holder.customerName.setText("Customer: " + order.userName);
-        holder.totalPrice.setText("Total: Rs. " + order.totalPrice);
+        holder.customerName.setText("Customer: " + order.customerName);
+        holder.totalPrice.setText("Total: Rs. " + order.totalAmount);
         holder.orderDate.setText("Date: " + order.orderDate);
         holder.orderStatus.setText(order.status);
 
@@ -54,7 +53,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         return orders.size();
     }
 
-    static class OrderViewHolder extends RecyclerView.ViewHolder {
+    public static class OrderViewHolder extends RecyclerView.ViewHolder {
         TextView orderId, customerName, totalPrice, orderDate, orderStatus;
         Button viewDetailsBtn;
 
@@ -69,4 +68,3 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         }
     }
 }
-

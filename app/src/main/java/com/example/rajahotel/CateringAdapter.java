@@ -6,9 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -34,17 +37,29 @@ public class CateringAdapter extends RecyclerView.Adapter<CateringAdapter.Cateri
     public void onBindViewHolder(@NonNull CateringViewHolder holder, int position) {
         CateringBooking booking = bookings.get(position);
         
-        holder.bookingId.setText("Booking ID: " + booking.bookingId);
-        holder.customerName.setText("Customer: " + booking.userName);
-        holder.eventType.setText("Event: " + booking.eventName); // Changed to eventName
-        holder.eventDate.setText("Date: " + booking.eventDate);
-        holder.guestCount.setText("Guests: " + booking.guestCount);
-        holder.estimatedCost.setText("Cost: Rs. " + booking.estimatedCost);
+        holder.bookingId.setText("ID: " + booking.bookingId);
+        holder.customerName.setText("Name: " + booking.name);
+        holder.eventType.setText("Event: " + booking.eventName);
+        holder.guestCount.setText("Guests: " + booking.count);
         holder.bookingStatus.setText("Status: " + booking.status);
+        holder.contactTv.setText("Phone: " + booking.phoneNumber);
 
-        holder.updateBtn.setOnClickListener(v -> {
-            // Open dialog to update status
-        });
+        // Confirm Button Logic
+        if ("Confirmed".equals(booking.status)) {
+            holder.updateBtn.setVisibility(View.GONE);
+        } else {
+            holder.updateBtn.setVisibility(View.VISIBLE);
+            holder.updateBtn.setText("Confirm Booking");
+            holder.updateBtn.setOnClickListener(v -> {
+                FirebaseDatabase.getInstance().getReference("CateringBookings")
+                        .child(booking.bookingId)
+                        .child("status")
+                        .setValue("Confirmed")
+                        .addOnSuccessListener(aVoid -> {
+                            Toast.makeText(activity, "Booking Confirmed! ✅", Toast.LENGTH_SHORT).show();
+                        });
+            });
+        }
     }
 
     @Override
@@ -53,7 +68,7 @@ public class CateringAdapter extends RecyclerView.Adapter<CateringAdapter.Cateri
     }
 
     static class CateringViewHolder extends RecyclerView.ViewHolder {
-        TextView bookingId, customerName, eventType, eventDate, guestCount, estimatedCost, bookingStatus;
+        TextView bookingId, customerName, eventType, guestCount, bookingStatus, contactTv;
         Button updateBtn;
 
         public CateringViewHolder(@NonNull View itemView) {
@@ -61,11 +76,11 @@ public class CateringAdapter extends RecyclerView.Adapter<CateringAdapter.Cateri
             bookingId = itemView.findViewById(R.id.cateringBookingId);
             customerName = itemView.findViewById(R.id.cateringCustomerName);
             eventType = itemView.findViewById(R.id.cateringEventType);
-            eventDate = itemView.findViewById(R.id.cateringEventDate);
             guestCount = itemView.findViewById(R.id.cateringGuestCount);
-            estimatedCost = itemView.findViewById(R.id.cateringEstimatedCost);
             bookingStatus = itemView.findViewById(R.id.cateringStatus);
             updateBtn = itemView.findViewById(R.id.updateCateringBtn);
+            // Reusing existing IDs or adding logic for contact
+            contactTv = itemView.findViewById(R.id.cateringEventDate);
         }
     }
 }

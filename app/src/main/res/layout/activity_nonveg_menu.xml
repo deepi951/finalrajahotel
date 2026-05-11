@@ -1,36 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <!-- TITLE -->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Non-Veg Menu"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="16dp" />
-
-    <!-- RECYCLERVIEW -->
+    android:background="#F5F5F5">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nonVegRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <!-- VIEW CART BUTTON -->
+        android:layout_height="match_parent"
+        android:layout_above="@id/viewCartBtn"
+        android:padding="8dp"
+        android:clipToPadding="false"/>
 
     <Button
         android:id="@+id/viewCartBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:backgroundTint="#F44336"
         android:text="View Cart 🛒"
-        android:layout_margin="12dp"/>
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
-</LinearLayout>
+</RelativeLayout>

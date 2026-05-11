@@ -5,26 +5,18 @@ public class CartItem {
     public int price;
     public int discount;
     public int quantity;
-    public int image; // Drawable resource id
+    public String imageUrl; // Added to sync with Admin Panel
 
-    public CartItem(String name, int price, int discount, int quantity, int image) {
+    public CartItem() {} // Required for Firebase
+
+    public CartItem(String name, int price, int discount, int quantity, String imageUrl) {
         this.name = name;
         this.price = price;
         this.discount = discount;
         this.quantity = quantity;
-        this.image = image;
+        this.imageUrl = imageUrl;
     }
 
-    // Constructor for items without discount
-    public CartItem(String name, int price, int quantity, int image) {
-        this.name = name;
-        this.price = price;
-        this.discount = 0;
-        this.quantity = quantity;
-        this.image = image;
-    }
-
-    // Helper to get the price after discount
     public int getFinalPrice() {
         if (discount > 0) {
             return price - (price * discount / 100);

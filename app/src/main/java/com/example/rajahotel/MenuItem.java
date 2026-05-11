@@ -52,4 +52,12 @@ public class MenuItem implements Serializable {
 
         this.isAvailable = isAvailable;
     }
+
+    // Helper to get the price after discount
+    public int getFinalPrice() {
+        if (discount > 0) {
+            return price - (price * discount / 100);
+        }
+        return price;
+    }
 }

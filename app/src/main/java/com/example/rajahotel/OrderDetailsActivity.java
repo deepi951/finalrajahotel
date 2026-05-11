@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,28 +60,39 @@ public class OrderDetailsActivity extends AppCompatActivity {
     }
 
     private void displayOrderDetails() {
+        if (currentOrder == null) return;
+
         orderIdTv.setText("Order ID: " + currentOrder.orderId);
-        customerNameTv.setText("Name: " + currentOrder.userName);
-        customerEmailTv.setText("Email: " + currentOrder.userEmail);
-        customerPhoneTv.setText("Phone: " + currentOrder.userPhone);
+        customerNameTv.setText("Name: " + currentOrder.customerName);
+        customerEmailTv.setText("Email: " + currentOrder.customerEmail);
+        customerPhoneTv.setText("Phone: " + currentOrder.customerPhone);
         deliveryAddressTv.setText("Address: " + currentOrder.deliveryAddress);
-        totalPriceTv.setText("Total: Rs. " + currentOrder.totalPrice);
+        totalPriceTv.setText("Total: Rs. " + currentOrder.totalAmount);
         orderDateTv.setText("Date: " + currentOrder.orderDate);
-        itemsDetailsTv.setText("Items:\n" + currentOrder.items);
+        
+        StringBuilder itemsText = new StringBuilder("Items:\n");
+        if (currentOrder.items != null) {
+            for (CartItem item : currentOrder.items) {
+                itemsText.append(item.name).append(" x").append(item.quantity)
+                         .append(" - Rs. ").append(item.getFinalPrice() * item.quantity).append("\n");
+            }
+        }
+        itemsDetailsTv.setText(itemsText.toString());
 
         // Set current status in spinner
-        int statusIndex = Arrays.asList(getResources().getStringArray(R.array.order_status_array))
-                .indexOf(currentOrder.status);
-        if (statusIndex >= 0) {
-            statusSpinner.setSelection(statusIndex);
+        if (currentOrder.status != null) {
+            int statusIndex = Arrays.asList(getResources().getStringArray(R.array.order_status_array))
+                    .indexOf(currentOrder.status);
+            if (statusIndex >= 0) {
+                statusSpinner.setSelection(statusIndex);
+            }
         }
     }
 
     private void updateOrderStatus() {
         String newStatus = statusSpinner.getSelectedItem().toString();
-        // Update in Firebase
+        // Update in Firebase logic would go here
         Toast.makeText(this, "Order status updated to " + newStatus + " ✅", Toast.LENGTH_SHORT).show();
         finish();
     }
 }
-

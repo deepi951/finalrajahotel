@@ -2,115 +2,69 @@ package com.example.rajahotel;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
 
 public class VegMenuActivity extends AppCompatActivity {
 
-    int qty1 = 1, qty2 = 1, qty3 = 1, qty4 = 1;
+    RecyclerView recyclerView;
+    CustomerMenuAdapter adapter;
+    ArrayList<MenuItem> itemList;
+    FirebaseFirestore db;
+    Button viewCartBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_veg_menu);
 
-        // ===== IDLY =====
-        TextView q1 = findViewById(R.id.qty1);
-        Button plus1 = findViewById(R.id.plus1);
-        Button minus1 = findViewById(R.id.minus1);
-        Button add1 = findViewById(R.id.addCart1);
+        db = FirebaseFirestore.getInstance();
+        recyclerView = findViewById(R.id.vegRecyclerView);
+        viewCartBtn = findViewById(R.id.viewCartBtn);
 
-        plus1.setOnClickListener(v -> {
-            qty1++;
-            q1.setText(String.valueOf(qty1));
+        itemList = new ArrayList<>();
+        adapter = new CustomerMenuAdapter(this, itemList);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        loadVegMenuRealtime();
+
+        viewCartBtn.setOnClickListener(v -> {
+            startActivity(new Intent(VegMenuActivity.this, CartActivity.class));
         });
-
-        minus1.setOnClickListener(v -> {
-            if (qty1 > 1) qty1--;
-            q1.setText(String.valueOf(qty1));
-        });
-
-        add1.setOnClickListener(v ->
-                addToCart("Idly", 10, qty1, R.drawable.idly)
-        );
-
-        // ===== DOSA =====
-        TextView q2 = findViewById(R.id.qty2);
-        Button plus2 = findViewById(R.id.plus2);
-        Button minus2 = findViewById(R.id.minus2);
-        Button add2 = findViewById(R.id.addCart2);
-
-        plus2.setOnClickListener(v -> {
-            qty2++;
-            q2.setText(String.valueOf(qty2));
-        });
-
-        minus2.setOnClickListener(v -> {
-            if (qty2 > 1) qty2--;
-            q2.setText(String.valueOf(qty2));
-        });
-
-        add2.setOnClickListener(v ->
-                addToCart("Dosa", 20, qty2, R.drawable.dosa)
-        );
-
-        // ===== MEALS =====
-        TextView q3 = findViewById(R.id.qty3);
-        Button plus3 = findViewById(R.id.plus3);
-        Button minus3 = findViewById(R.id.minus3);
-        Button add3 = findViewById(R.id.addCart3);
-
-        plus3.setOnClickListener(v -> {
-            qty3++;
-            q3.setText(String.valueOf(qty3));
-        });
-
-        minus3.setOnClickListener(v -> {
-            if (qty3 > 1) qty3--;
-            q3.setText(String.valueOf(qty3));
-        });
-
-        add3.setOnClickListener(v ->
-                addToCart("Meals", 90, qty3, R.drawable.meals)
-        );
-
-        // ===== VEG FRIED RICE =====
-        TextView q4 = findViewById(R.id.qty4);
-        Button plus4 = findViewById(R.id.plus4);
-        Button minus4 = findViewById(R.id.minus4);
-        Button add4 = findViewById(R.id.addCart4);
-
-        plus4.setOnClickListener(v -> {
-            qty4++;
-            q4.setText(String.valueOf(qty4));
-        });
-
-        minus4.setOnClickListener(v -> {
-            if (qty4 > 1) qty4--;
-            q4.setText(String.valueOf(qty4));
-        });
-
-        add4.setOnClickListener(v ->
-                addToCart("Veg Fried Rice", 80, qty4, R.drawable.vegfriedrice)
-        );
-
-        // ===== VIEW CART BUTTON =====
-        Button viewCart = findViewById(R.id.viewCartBtn);
-        viewCart.setOnClickListener(v ->
-                startActivity(new Intent(this, CartActivity.class))
-        );
     }
 
-    // 🔥 ADD TO CART FUNCTION (MULTI ITEM)
-    private void addToCart(String name, int price, int qty, int image) {
+    private void loadVegMenuRealtime() {
+        // Updated: Query "menu" collection and filter by category "Veg"
+        db.collection("menu")
+                .whereEqualTo("category", "Veg")
+                .whereEqualTo("isAvailable", true)
+                .addSnapshotListener((value, error) -> {
+                    if (error != null) {
+                        Toast.makeText(this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
-        CartManager.cartList.add(new CartItem(name, price, qty, image));
-
-        Toast.makeText(this,
-                name + " added to cart 🛒",
-                Toast.LENGTH_SHORT).show();
+                    if (value != null) {
+                        itemList.clear();
+                        for (QueryDocumentSnapshot document : value) {
+                            MenuItem item = document.toObject(MenuItem.class);
+                            item.itemId = document.getId();
+                            itemList.add(item);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
     }
 }
